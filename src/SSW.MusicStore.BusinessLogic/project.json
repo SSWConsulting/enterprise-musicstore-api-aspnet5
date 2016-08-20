@@ -7,13 +7,18 @@
     "Microsoft.EntityFrameworkCore": "1.0.0",
     "SSW.MusicStore.BusinessLogic.Interfaces": "1.0.0-*",
     "SSW.MusicStore.Data": "1.0.0-*",
-    "Stripe.net": "6.3.5",
+    "Stripe.net": "6.3.6",
     "Serilog": "2.0.0",
     "Autofac": "4.0.0-rc3-286",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc3-280"
   },
 
   "frameworks": {
-    "net461": {}
+    "net461": {
+      "imports": [ "portable-net451+win8" ]
+    },
+    "netcoreapp1.0": {
+      "imports": [ "portable-net451+win8" ]
+    }
   }
 }

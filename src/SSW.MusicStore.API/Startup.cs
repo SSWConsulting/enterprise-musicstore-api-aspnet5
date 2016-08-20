@@ -12,7 +12,11 @@ using System.Threading.Tasks;
 using Mindscape.Raygun4Net;
 
 using Autofac;
+
+#if NET461
 using SerilogWeb.Classic.Enrichers;
+#endif
+
 using SSW.MusicStore.API.Filters;
 using SSW.MusicStore.API.Infrastructure.DI;
 using SSW.MusicStore.API.Settings;
@@ -68,9 +72,9 @@ namespace SSW.MusicStore.API
                     });
 
             services.AddRaygun(this.Configuration);
-
+#if NET461
             services.AddApplicationInsightsTelemetry(this.Configuration);
-
+#endif
             RegisterSwagger(services);
 
             var container = services.CreateAutofacContainer(this.Configuration);
@@ -100,8 +104,11 @@ namespace SSW.MusicStore.API
             var config =
                 new LoggerConfiguration()
                     .WriteTo.Seq(serverUrl: Configuration["Seq:Url"], apiKey: Configuration["Seq:Key"])
-                    .Enrich.WithProperty("ApplicationName", "Music Store")
-                    .Enrich.With(new HttpRequestIdEnricher());
+#if NET461
+                    .Enrich.With(new HttpRequestIdEnricher())
+#endif
+                    .Enrich.WithProperty("ApplicationName", "Music Store");
+
             Log.Logger = config.CreateLogger();
             
             loggerFactory.AddSerilog();
@@ -163,9 +170,10 @@ namespace SSW.MusicStore.API
             app.UseSwagger();
 
             app.UseRaygun();
-
+#if NET461
             app.UseApplicationInsightsRequestTelemetry();
             app.UseApplicationInsightsExceptionTelemetry();
+#endif
         }
     }
 }

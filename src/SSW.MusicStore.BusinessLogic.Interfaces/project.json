@@ -3,9 +3,10 @@
   "description": "SSW.MusicStore.BusinessLogic.Interfaces Class Library",
   "authors": [ "igor" ],
   "frameworks": {
-    "net461": {}
+    "net461": {},
+    "netcoreapp1.0": {}
   },
   "dependencies": {
-    "SSW.MusicStore.Data": "1.0.0-*"
+    "SSW.MusicStore.Data": "1.0.0.0"
   }
 }
