@@ -47,7 +47,7 @@ namespace SSW.MusicStore.BusinessLogic.Command
             };
 
             var client = new StripeChargeService(stripeSecretKey);
-            var result = await client.CreateAsync(chargeOptions);
+            var result = client.Create(chargeOptions);
 
             if (!result.Paid)
             {

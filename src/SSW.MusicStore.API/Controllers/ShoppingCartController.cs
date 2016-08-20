@@ -198,7 +198,7 @@ namespace SSW.MusicStore.API.Controllers
             {
                 var message = "Could not find name identifier in user claims";
                 _logger.LogError(message);
-                throw new ApplicationException(message);
+                throw new MusicStoreException(message);
             }
 
             return userId;

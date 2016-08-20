@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0.0",
   "description": "SSW.MusicStore.Data Class Library",
   "authors": [ "Duncan Hunter" ],
   "dependencies": {
@@ -17,6 +17,9 @@
   },
   "frameworks": {
     "net461": {
+      "imports": [ "portable-net451+win8" ]
+    },
+    "netcoreapp1.0": {
       "imports": [ "portable-net451+win8" ]
     }
   },
